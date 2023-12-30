@@ -8,9 +8,9 @@ from manga_ocr.manga_ocr.ocr import MangaOcr
 
 class infer_ocr():
     def __init__(self):
-        self.moce = MangaOcr()
+        self.mocr = MangaOcr()
 
-    def text_generator(self, request, upload_dir):
+    def text_generator(self, upload_dir):
         i = 1
         image_list = os.listdir(os.path.join( upload_dir,'cropped'))
         for img in image_list:
