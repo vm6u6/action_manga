@@ -7,9 +7,12 @@ from capture_text import findSpeechBubbles
 
 
 class action_manga():
-    def __inif__(self, folder_path):
+    def __init__(self, folder_path):
         self.ocr_engine = infer_ocr()
         self.folder_path = folder_path
+        self.crop_textPath = folder_path + "/cropped"
+        if not os.path.isdir(self.crop_textPath):
+            os.makedirs(self.crop_textPath)
 
     def load_data_path(self):
         image_extensions = ['.jpg', '.jpeg', '.png', '.gif', '.bmp']
@@ -25,11 +28,15 @@ class action_manga():
     def main(self):
         image_path = self.load_data_path()
         for img_path in image_path:
-            text_res = self.ocr_engine.text_generator(img_path)
-            
+            croppedImageData = findSpeechBubbles(img_path, "complex", self.crop_textPath)
+
+        croppedImageList = os.listdir(self.crop_textPath)
+        for crop_img in croppedImageList:   
+            text_res = self.ocr_engine.text_generator(self.crop_textPath + "/" + crop_img)
 
         return 
     
 if __name__ == "__main__":
-    test = action_manga()
+    folder_path = "data/testing_data"
+    test = action_manga(folder_path)
     test.main()

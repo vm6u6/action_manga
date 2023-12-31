@@ -10,13 +10,9 @@ class infer_ocr():
     def __init__(self):
         self.mocr = MangaOcr()
 
-    def text_generator(self, upload_dir):
-        i = 1
-        image_list = os.listdir(os.path.join( upload_dir,'cropped'))
-        for img in image_list:
-            i+=1
-            text = self.mocr(os.path.join( upload_dir,'cropped',img))
-            yield json.dumps({"id": i,"source":text})
-        else:
-            print("OCR complete!")
+    def text_generator(self, img_dir):
+        text = self.mocr(img_dir)
+        print(text)
+        return text
+
        

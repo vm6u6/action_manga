@@ -36,7 +36,7 @@ def findSpeechBubbles(imagePath, method, upload_dir):
             cv2.rectangle(image, (x, y), (x + w, y + h), (0, 255, 0), 2)
             croppedImage = image[y:y+h, x:x+w]
             croppedImageList.append(croppedImage)
-            cv2.imwrite(upload_dir+"/"+'cropped/'+ str(i)+".jpg", croppedImage)
+            cv2.imwrite(upload_dir+"/"+ str(i)+".jpg", croppedImage)
             i += 1
 
     return croppedImageList
