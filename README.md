@@ -9,7 +9,7 @@
 
 4. Update text extraction process with "Manga-Text-Segmentation."
 
-
+5. 
 
 
 ## Reference source

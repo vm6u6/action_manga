@@ -30,13 +30,13 @@ class action_manga():
         for img_path in image_path:
             croppedImageData = findSpeechBubbles(img_path, "complex", self.crop_textPath)
 
-        croppedImageList = os.listdir(self.crop_textPath)
-        for crop_img in croppedImageList:   
-            text_res = self.ocr_engine.text_generator(self.crop_textPath + "/" + crop_img)
+        # croppedImageList = os.listdir(self.crop_textPath)
+        # for crop_img in croppedImageList:   
+        #     text_res = self.ocr_engine.text_generator(self.crop_textPath + "/" + crop_img)
 
         return 
     
 if __name__ == "__main__":
-    folder_path = "data/testing_data"
+    folder_path = "data/karrte"
     test = action_manga(folder_path)
     test.main()
