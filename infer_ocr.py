@@ -1,5 +1,4 @@
 import os, sys
-os.environ['CUDA_LAUNCH_BLOCKING'] = "1"
 now_dir = os.getcwd()
 sys.path.append(now_dir)
 
