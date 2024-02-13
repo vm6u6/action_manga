@@ -16,21 +16,23 @@ class seg_test():
 
         detections = sv.Detections.from_roboflow(result)
 
+
         label_annotator = sv.LabelAnnotator()
         mask_annotator = sv.MaskAnnotator()
 
         image = cv2.imread(img_path)
 
-        annotated_image = mask_annotator.annotate(
+        annotated_image, color_mask = mask_annotator.annotate(
             scene=image, detections=detections)
+        
         # annotated_image = label_annotator.annotate(
         #     scene=annotated_image, detections=detections, labels=labels)
-        print(detections.shape)
+        # print(detections.shape)
 
-        sv.plot_image(image=annotated_image, size=(16, 16))
+
+        # sv.plot_image(image=annotated_image, size=(16, 16))
         # cv2.imwrite(save_path, annotated_image)
-
-        return 
+        return annotated_image, detections.xyxy
 
 if __name__ == "__main__":
     test = seg_test()

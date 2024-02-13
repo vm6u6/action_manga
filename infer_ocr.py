@@ -11,7 +11,6 @@ class infer_ocr():
 
     def text_generator(self, img_dir):
         text = self.mocr(img_dir)
-        print(text)
         return text
 
        
