@@ -7,6 +7,7 @@ from capture_text import findSpeechBubbles
 from manga_seg import seg_test
 from utils import convert_to_jpg
 import cv2
+from translate import M2M_translate
 
 class action_manga():
     def __init__(self, folder_path):
@@ -17,6 +18,9 @@ class action_manga():
             os.makedirs(self.crop_textPath)
         
         self.seg_text = seg_test()
+        self.traslate_engine = M2M_translate()
+        self.src_lang = "jp"
+        self.target_lang = "zh"
 
     def load_data_path(self):
         image_extensions = ['.jpg', '.jpeg', '.png', '.gif', '.bmp']
@@ -56,6 +60,8 @@ class action_manga():
         image_path, image_name = self.load_data_path()
         print("[INFO] Dealing with images: ", image_name)
 
+
+        # { Crop image }
         cnt = 0
         for img_path in image_path:
             save_path = img_path.split(".")[0] + ".jpg"
@@ -63,18 +69,17 @@ class action_manga():
 
             if save_path.endswith("jpg"):
                 image = cv2.imread(save_path)
-
                 # croppedImageData = findSpeechBubbles(img_path, "complex", self.crop_textPath)              # OpenCV Version
-                crpppedImageData, image_xyxy = self.seg_text.run(save_path, self.crop_textPath)               # Roboflow
-
+                crpppedImageData, image_xyxy = self.seg_text.run(save_path)               # Roboflow
                 self.save_cropped_img(image_xyxy, image, image_name[cnt])
-
                 cnt += 1
 
         croppedImageList = os.listdir(self.crop_textPath)
         for crop_img in croppedImageList:   
             text_res = self.ocr_engine.text_generator(self.crop_textPath + "/" + crop_img)
-            print(text_res)
+            # print(text_res)
+            translated_text = self.traslate_engine.run(text_res, self.src_lang, self.target_lang)
+
         return 
     
 if __name__ == "__main__":

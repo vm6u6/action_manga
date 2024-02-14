@@ -10,7 +10,7 @@ class seg_test():
         self.model = self.project.version(10).model
 
 
-    def run(self, img_path, save_path):
+    def run(self, img_path):
         result = self.model.predict(img_path, confidence=40).json()
         labels = [item["class"] for item in result["predictions"]]
 
@@ -22,7 +22,7 @@ class seg_test():
 
         image = cv2.imread(img_path)
 
-        annotated_image, color_mask = mask_annotator.annotate(
+        annotated_image = mask_annotator.annotate(
             scene=image, detections=detections)
         
         # annotated_image = label_annotator.annotate(
