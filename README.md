@@ -31,3 +31,6 @@
 4. https://github.com/juvian/Manga-Text-Segmentation
 5. https://universe.roboflow.com/tarehimself/manga-translator-segmentation
 6. https://github.com/reidenong/ComicPanelSegmentation
+7. https://github.com/dmMaze/BallonsTranslator                   # handicraft the proper text blob
+8. https://github.com/zyddnys/manga-image-translator/tree/main   # Prototype
+9. DragDiffusion : https://blog.csdn.net/qq_44681809/article/details/135738479 

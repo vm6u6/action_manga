@@ -11,7 +11,7 @@ class seg_test():
 
 
     def run(self, img_path):
-        result = self.model.predict(img_path, confidence=40).json()
+        result = self.model.predict(img_path, confidence=10).json()
         labels = [item["class"] for item in result["predictions"]]
 
         detections = sv.Detections.from_roboflow(result)
@@ -28,7 +28,6 @@ class seg_test():
         # annotated_image = label_annotator.annotate(
         #     scene=annotated_image, detections=detections, labels=labels)
         # print(detections.shape)
-
 
         # sv.plot_image(image=annotated_image, size=(16, 16))
         # cv2.imwrite(save_path, annotated_image)
