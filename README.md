@@ -6,10 +6,15 @@
 
 * OCR:
 - Manga-OCR (japanese only)
+- [TODO] mit48px_ctc / YSGYoloDetector (filter the onomatopoeia)
+
 
 * Translate:
 - M2M-100
-- ChatGPT (TODO)
+- Gemini 2  ## PUT YOUR LLM API KEY IN LLM.TXT
+
+* Inpainting:
+- LaMa
 
 [After Translate PART 1]
 * relocate the text on the original img
