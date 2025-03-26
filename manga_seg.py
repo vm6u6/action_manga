@@ -6,15 +6,17 @@ import numpy as np
 class seg_test():
     def __init__(self):
         self.rf = Roboflow(api_key="g2d6XQ9NG01K5dVIhSFL")
-        self.project = self.rf.workspace().project("manga-translator-segmentation")
-        self.model = self.project.version(10).model
+        # self.project = self.rf.workspace().project("manga-translator-segmentation")
+        # self.model = self.project.version(10).model
+        self.project = self.rf.workspace().project("manga-translator-detection")
+        self.model = self.project.version(7).model
 
 
     def run(self, img_path):
-        result = self.model.predict(img_path, confidence=10).json()
+        result = self.model.predict(img_path, confidence=65, overlap=70).json()
         labels = [item["class"] for item in result["predictions"]]
 
-        detections = sv.Detections.from_roboflow(result)
+        detections = sv.Detections.from_inference(result)
 
 
         label_annotator = sv.LabelAnnotator()

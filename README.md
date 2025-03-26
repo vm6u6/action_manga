@@ -5,16 +5,19 @@
 - DBNet ++ (TODO)
 
 * OCR:
-- Manga-OCR (japanese only)
+- Manga-OCR
 - [TODO] mit48px_ctc / YSGYoloDetector (filter the onomatopoeia)
 
 
 * Translate:
 - M2M-100
-- Gemini 2  ## PUT YOUR LLM API KEY IN LLM.TXT
+- Gemini 2  ## CREATE YOUR LLM API KEY IN ./LLM.TXT
 
 * Inpainting:
 - LaMa
+
+* Segment pannel:
+- YOLOv11
 
 [After Translate PART 1]
 * relocate the text on the original img
@@ -39,3 +42,4 @@
 7. https://github.com/dmMaze/BallonsTranslator                   # handicraft the proper text blob
 8. https://github.com/zyddnys/manga-image-translator/tree/main   # Prototype
 9. DragDiffusion : https://blog.csdn.net/qq_44681809/article/details/135738479 
+10. https://universe.roboflow.com/ashu-biqfs/manga-segment

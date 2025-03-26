@@ -2,3 +2,8 @@
 LLM.txt
 tmp.txt
 pretrain
+*.ckpt
+*.pt
+*.onnx
+*.jpg
+*.png
