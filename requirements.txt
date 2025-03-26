@@ -34,3 +34,8 @@ einops
 sharply
 py3langid==0.2.0
 kornia
+python-docx
+docx2txt
+piexif
+natsort
+ordered_set

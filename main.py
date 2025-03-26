@@ -125,8 +125,8 @@ class action_manga():
         inpainted_image_list = os.listdir(self.inpaint_img_path)
         for inpainted_img in inpainted_image_list:
             in_img_path = self.inpaint_img_path + inpainted_img 
-            annotated_image, xyxy = self.pennel_engine.run(in_img_path)
-            pannel_paths = self.pennel_engine.save_panels(annotated_image, xyxy, inpainted_img, self.save_pannel_path)
+            img, annotated_image, xyxy = self.pennel_engine.run(in_img_path)
+            pannel_paths = self.pennel_engine.save_panels(img, xyxy, inpainted_img, self.save_pannel_path)
 
 
             

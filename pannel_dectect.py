@@ -42,25 +42,29 @@ class pannel_infer():
         # bordered_img_path = img_path.replace('.jpg', '_bordered.jpg')
         # cv2.imwrite(bordered_img_path, img_with_border)
 
-        result = self.model.predict(img_path, confidence=50).json()         # .jpg
+        result = self.model.predict(img_path, confidence=70).json()         # .jpg
         labels = [item["class"] for item in result["predictions"]]
 
         detections = sv.Detections.from_inference(result)
         label_annotator = sv.LabelAnnotator()
         mask_annotator = sv.MaskAnnotator()
 
-        
         annotated_image = mask_annotator.annotate(
             scene=img, detections=detections)
         # annotated_image = label_annotator.annotate(
         #     scene=annotated_image, detections=detections, labels=labels)
         # sv.plot_image(image=annotated_image, size=(16, 16))
         
+    
+        comic_indices = [i for i, label in enumerate(labels) if label == "comic"]
+        comic_xyxy = detections.xyxy[comic_indices]
+        
+        # print("只有comic标签的边界框:", comic_xyxy)
         # os.remove(bordered_img_path)
         # panel_paths = self.save_panels(img, detections.xyxy, output_dir)
-        return annotated_image, detections.xyxy
+        return img, annotated_image, comic_xyxy
     
 if __name__ == "__main__":
     tmp = pannel_infer()
     test_img_path = "./data/testing_data/jjtk_test.jpg"
-    annotated_image, xyxy = tmp.run(test_img_path)
+    img, annotated_image, xyxy = tmp.run(test_img_path)
